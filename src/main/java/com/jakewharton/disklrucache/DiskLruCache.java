@@ -932,12 +932,30 @@ public final class DiskLruCache implements Closeable {
       throw new IOException("unexpected journal line: " + java.util.Arrays.toString(strings));
     }
 
+    public String getExt(String s) {
+      int indexOf = s.lastIndexOf('.');
+      if (indexOf != -1) {
+        return s.substring(indexOf + 1);
+      } else return null;
+    }
+
+    private String getBaseKey(String key, int i) {
+      String ext = getExt(key);
+      String base;
+      if (ext != null) {
+        base = key.substring(0, key.length() - ext.length()) + i + "." + ext;
+      } else {
+        base = key + "." + i;
+      }
+      return base;
+    }
+
     public File getCleanFile(int i) {
-      return new File(directory, key + "." + i);
+      return new File(directory, getBaseKey(key, i));
     }
 
     public File getDirtyFile(int i) {
-      return new File(directory, key + "." + i + ".tmp");
+      return new File(directory, getBaseKey(key, i) + ".tmp");
     }
   }
 }
