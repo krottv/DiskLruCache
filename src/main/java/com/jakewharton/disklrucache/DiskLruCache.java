@@ -883,7 +883,7 @@ public final class DiskLruCache implements Closeable {
       for (int i = 0; i < valueCount; i++) {
         String baseKey = getBaseKey(key, i);
         cleanFiles[i] = new File(directory, baseKey);
-        dirtyFiles[i] = new File(directory, baseKey + ".mp4");
+        dirtyFiles[i] = new File(directory, baseKey);
       }
     }
 
