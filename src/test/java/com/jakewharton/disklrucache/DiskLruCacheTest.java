@@ -16,6 +16,13 @@
 
 package com.jakewharton.disklrucache;
 
+import org.apache.commons.io.FileUtils;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -27,12 +34,6 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.apache.commons.io.FileUtils;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.Rule;
-import org.junit.rules.TemporaryFolder;
 
 import static com.jakewharton.disklrucache.DiskLruCache.JOURNAL_FILE;
 import static com.jakewharton.disklrucache.DiskLruCache.JOURNAL_FILE_BACKUP;
